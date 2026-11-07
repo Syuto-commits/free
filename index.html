@@ -83,14 +83,13 @@
       text-decoration: none;
       font-weight: bold;
       border-bottom: 1px solid #f0f0f0;
-      transition: background-color 0.2s;
     }
 
     .drawer-menu li a:hover {
       background-color: #f8f9fa;
     }
 
-    /* 背景のオーバーレイ（メニューが開いた時の背景黒透過） */
+    /* 背景のオーバーレイ */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -105,19 +104,15 @@
     }
 
     /* チェックが入った時（ボタンが押された時）の動き */
-
-    /* 1. ドロワーメニューを画面内へ移動 */
     #menu-toggle:checked ~ .drawer-menu {
       right: 0;
     }
 
-    /* 2. 背景オーバーレイを表示 */
     #menu-toggle:checked ~ .menu-overlay {
       opacity: 1;
       visibility: visible;
     }
 
-    /* 3. ハンバーガーアイコンを「×」に変形 */
     #menu-toggle:checked ~ header .hamburger-icon span:nth-child(1) {
       transform: translateY(10.5px) rotate(45deg);
     }
@@ -128,7 +123,6 @@
       transform: translateY(-10.5px) rotate(-45deg);
     }
 
-    /* メインコンテンツエリア */
     main {
       padding: 40px 20px;
       text-align: center;
@@ -151,24 +145,21 @@
     </label>
   </header>
 
-  <!-- ドロワーメニュー（中身） -->
+  <!-- ドロワーメニュー -->
   <nav class="drawer-menu">
     <ul>
       <li><a href="line://">LINEを開く</a></li>
       <li><a href="twitter://">X (Twitter) を開く</a></li>
       <li><a href="youtube://">YouTubeを開く</a></li>
-      <li><a href="#">ホーム</a></li>
-      <li><a href="#">設定・ヘルプ</a></li>
     </ul>
   </nav>
 
-  <!-- メニューオープン時に背景を薄暗くする要素（クリックで閉じる） -->
+  <!-- 背景を暗くする要素 -->
   <label for="menu-toggle" class="menu-overlay"></label>
 
-  <!-- 画面のメインコンテンツ -->
   <main>
     <h1>ようこそ</h1>
-    <p>右上のボタンを押すとドロワーメニューが開きます。</p>
+    <p>右上の三本線を押すとメニューが開きます。</p>
   </main>
 
 </body>
@@ -177,64 +168,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>マイ アプリリンク集</title>
+  <title>アプリ起動サイト</title>
   <style>
-    body {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      background-color: #f4f6f8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      margin: 0;
-    }
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-    .container {
-      width: 100%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .app-button {
-      display: block;
-      padding: 16px;
-      background-color: #ffffff;
-      color: #333;
+    .app-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #007bff;
       text-decoration: none;
-      text-align: center;
+      border-radius: 8px;
       font-weight: bold;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .app-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
 <body>
 
-  <h1>おすすめアプリ・サイト</h1>
-
-  <div class="container">
-    <!-- LINEアプリを開く -->
-    <a href="line://" class="app-button">LINEを開く</a>
-
-    <!-- X (旧Twitter) アプリを開く -->
-    <a href="twitter://" class="app-button">X (Twitter) を開く</a>
-
-    <!-- YouTubeアプリを開く -->
-    <a href="youtube://" class="app-button">YouTubeを開く</a>
-
-    <!-- 自作アプリやその他スキームを指定する場合 -->
-    <!-- <a href="myapp://" class="app-button">自作アプリを開く</a> -->
-  </div>
+  <h1>アプリを開く</h1>
+  <!-- 指定したアプリを開くボタン -->
+  <a href="myapp://open" class="app-btn">アプリを起動する</a>
 
 </body>
 </html>

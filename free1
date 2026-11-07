@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ドロワーメニュー付きサイト</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ヘッダーのスタイル */
+    header {
+      background-color: #ffffff;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+
+    /* チェックボックス本体は非表示にする */
+    #menu-toggle {
+      display: none;
+    }
+
+    /* ハンバーガーボタンのスタイル */
+    .hamburger-icon {
+      width: 30px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .hamburger-icon span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* ドロワーメニュー（右側から出る） */
+    .drawer-menu {
+      position: fixed;
+      top: 0;
+      right: -280px; /* 初期状態は画面外へ隠す */
+      width: 280px;
+      height: 100%;
+      background-color: #ffffff;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease;
+      z-index: 90;
+      padding-top: 80px;
+    }
+
+    .drawer-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .drawer-menu li a {
+      display: block;
+      padding: 16px 24px;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background-color 0.2s;
+    }
+
+    .drawer-menu li a:hover {
+      background-color: #f8f9fa;
+    }
+
+    /* 背景のオーバーレイ（メニューが開いた時の背景黒透過） */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 80;
+    }
+
+    /* チェックが入った時（ボタンが押された時）の動き */
+
+    /* 1. ドロワーメニューを画面内へ移動 */
+    #menu-toggle:checked ~ .drawer-menu {
+      right: 0;
+    }
+
+    /* 2. 背景オーバーレイを表示 */
+    #menu-toggle:checked ~ .menu-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 3. ハンバーガーアイコンを「×」に変形 */
+    #menu-toggle:checked ~ header .hamburger-icon span:nth-child(1) {
+      transform: translateY(10.5px) rotate(45deg);
+    }
+    #menu-toggle:checked ~ header .hamburger-icon span:nth-child(2) {
+      opacity: 0;
+    }
+    #menu-toggle:checked ~ header .hamburger-icon span:nth-child(3) {
+      transform: translateY(-10.5px) rotate(-45deg);
+    }
+
+    /* メインコンテンツエリア */
+    main {
+      padding: 40px 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- メニュー開閉状態を管理する隠しチェックボックス -->
+  <input type="checkbox" id="menu-toggle">
+
+  <!-- ヘッダーエリア -->
+  <header>
+    <div class="logo">マイアプリポータル</div>
+    <!-- ハンバーガーボタン -->
+    <label for="menu-toggle" class="hamburger-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </header>
+
+  <!-- ドロワーメニュー（中身） -->
+  <nav class="drawer-menu">
+    <ul>
+      <li><a href="line://">LINEを開く</a></li>
+      <li><a href="twitter://">X (Twitter) を開く</a></li>
+      <li><a href="youtube://">YouTubeを開く</a></li>
+      <li><a href="#">ホーム</a></li>
+      <li><a href="#">設定・ヘルプ</a></li>
+    </ul>
+  </nav>
+
+  <!-- メニューオープン時に背景を薄暗くする要素（クリックで閉じる） -->
+  <label for="menu-toggle" class="menu-overlay"></label>
+
+  <!-- 画面のメインコンテンツ -->
+  <main>
+    <h1>ようこそ</h1>
+    <p>右上のボタンを押すとドロワーメニューが開きます。</p>
+  </main>
+
+</body>
+</html>

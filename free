@@ -1,4 +1,4 @@
-<html lang="ja>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,4 +47,17 @@
   <h1>おすすめアプリ・サイト</h1>
 
   <div class="container">
-    <a href="
+    <a href="line://" class="app-button">LINEを開く</a>
+
+    <!-- X (旧Twitter) アプリを開く -->
+    <a href="twitter://" class="app-button">X (Twitter) を開く</a>
+
+    <!-- YouTubeアプリを開く -->
+    <a href="youtube://" class="app-button">YouTubeを開く</a>
+
+    <!-- 自作アプリやその他スキームを指定する場合 -->
+    <!-- <a href="myapp://" class="app-button">自作アプリを開く</a> -->
+  </div>
+
+</body>
+</html>
